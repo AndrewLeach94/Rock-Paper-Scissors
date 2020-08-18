@@ -6,6 +6,108 @@
     <title>Rock, Paper, Scissors</title>
 </head>
 <body>
+    <script>
     
+    // What's the player's name?
+    let player = prompt("What's your name?");
+
+    // Make the computer pick their choice    
+    function computerPlay () { 
+        let randomNumber;
+        let computerSelection;
+        // Generate a random whole number between between 0 and 2 - inclusive
+        function generateRandom (min, max) {
+            min = Math.ceil(min);
+            max = Math.ceil(max);
+            return randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        generateRandom(0, 2); 
+        
+        // Assign the random number to either rock, paper, or scissors
+        if (randomNumber == 0) {
+            computerSelection = "rock"
+        }
+
+        else if (randomNumber == 1) {
+            computerSelection = "paper";
+        }
+
+        else if (randomNumber == 2) {
+            computerSelection = "scissors";
+        }
+        return computerSelection;
+    }
+
+    // Play a full game - consisting of 5 rounds
+    function game() {
+        let userScore = 0;
+        let computerScore = 0;
+        let computer = "Computer";
+        let winner = " ";
+    
+    // Play a single round - Have user enter their choice, count scores, roll computer's turn, and display a message
+        function playRound(userSelection, computerSelection) {
+        // Convert the user selection to a string that is all lowercase
+            let userSelectionConverted = userSelection.toLowerCase();
+
+        // Display victory or defeat message to user and add to the total scores - this if/else-if statement is written as a tenerary operator for shorthand 
+            return  userSelectionConverted == "rock" && computerSelection == "rock" ? console.log("Lame. Guess y'all just like rocks then") :
+                userSelectionConverted == "rock" && computerSelection == "paper" ? (console.log("Sorry pal, paper beats rock :("), ++computerScore) :
+                userSelectionConverted == "rock" && computerSelection == "scissors" ? (console.log("Hell yeah, you sure crushed those scissors"), ++userScore) :
+                userSelectionConverted == "paper" && computerSelection == "rock" ? (console.log("Hell yeah, you sure beat that rock"), ++userScore) :
+                userSelectionConverted == "paper" && computerSelection == "paper" ? console.log("Lame. Guess y'all just like paper then") :
+                userSelectionConverted == "paper" && computerSelection == "scissors" ? (console.log("Sorry pal, you just beat by some scissors :("), ++computerScore) :
+                userSelectionConverted == "scissors" && computerSelection == "rock" ? (console.log("Sorry pal, you got beat by a rock :("), ++computerScore) :
+                userSelectionConverted == "scissors" && computerSelection == "paper" ? (console.log("Hell yeah, you sure cut that paper"), ++userScore) : 
+                userSelectionConverted == "scissors" && computerSelection == "scissors" ? console.log("Lame. Guess y'all just really like scissors")
+                : "You forgotten how to spell? Try again";
+    }
+
+        // Repeat this round 5 times for a complete game -
+        for (let i = 0; i < 5; i++) {
+            // Execute game
+            playRound(prompt("What will it be? Rock? Paper? Scissors?"), computerPlay());
+            // Display score
+            console.info(player +"'s' Score: " + userScore);
+            console.info(computer + "'s Score: " + computerScore);
+
+        }
+        
+        // Declare winner and display final score
+        if (userScore > computerScore) {
+             winner = player
+        }
+
+        else if (userScore == computerScore) {
+             winner = null;
+        }
+
+        else {
+            winner = computer;
+        }
+
+        // Return and announce the winner of the game
+
+        if (winner == player) {
+            return "Hey congratulations " + player + ", you've won!"; 
+        }
+
+        else if (winner == computer) {
+            return "Tough luck, better luck next time"
+        }
+
+        else {
+            return "Looks like it's a tie. Both of y'all suck."
+        }
+
+
+    }
+
+    </script>
+<header>
+    <h1>Rock, Paper, Scissors</h1>
+    <h2>To activate the game, enter <strong>"game()"</strong> into the browser's console</h2>
+    <p>There isn't any front-end or anything close to resembling design at the moment. Hang tight! :)</p>
+</header>
 </body>
 </html>
