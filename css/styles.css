@@ -1,0 +1,136 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: #08161D;
+    margin: 0 20px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.7rem;
+    color: #47A0CA;
+}
+
+h2 {
+    font-family: 'PT Sans', sans-serif;
+    color: #47A0CA;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+#score-board {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #47A0CA;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 1.3rem;
+    background-color: #0A1E27;
+    border: 2px solid #143C4E;
+    padding: 10px 0px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+#score-board p {
+    margin: 0px;
+}
+
+#player-score {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+#computer-score {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.player-counter {
+    font-family: 'Russo One', sans-serif;
+    color: #EBF4F9;
+    font-size: 2.4rem;
+    margin-top: 20px;
+}
+
+.computer-counter {
+    font-family: 'Russo One', sans-serif;
+    color: #EBF4F9;
+    font-size: 2.4rem;
+    margin-top: 20px;
+}
+
+#animation-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+
+}
+/* selects all SVG animations to pile each animation on top of the other */
+#animation-container * { 
+    position: absolute;
+}
+
+#button-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+button {
+    background-color: #EB387F;
+    border-style: none;
+    color: #EFEFEF;
+    font-family: 'Russo One', sans-serif;
+    font-size: 1rem;
+    padding: 5px 10px;
+    min-width: 95px;
+}
+
+button i {
+    margin-right: 5px;
+}
+
+#message-banner  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0A1E27;
+    color: #47A0CA;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 1rem;
+    padding: 20px 10px;
+    margin: 20px 0px 40px;
+    text-align: center;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+footer h6 {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #47a0ca85;
+}
