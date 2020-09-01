@@ -4,8 +4,64 @@ html {
 
 body {
     background-color: #08161D;
-    margin: 0 20px;
 }
+
+.modal-wrapper {
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    background-color: #000000e3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-wrapper-hide {
+    opacity: 0%;
+    transition: 0.5s;
+    transition-duration: 0.5s;
+}
+
+
+#modal {
+    display: flex;
+    width: 70vw;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    background-color: #0F2D3B;
+    font-family: 'PT Sans', sans-serif;
+    padding: 50px 20px 20px;
+    z-index: 100;
+    border-radius: 4px;
+}
+
+#modal label {
+    color: #EBF4F9;
+    font-family: 'PT Sans', sans-serif;
+}
+
+#modal input {
+    background-color: #174358;
+    color: #EBF4F9;
+    margin: 20px 0px 30px;
+    font-family: 'PT Sans', sans-serif;
+    border: 1px solid #123445;
+    border-radius: 2px;
+    padding: 5px 5px;
+    width: 100%;
+}
+
+#modal input:focus {
+    outline: 1px solid #47A0CA;
+}
+
+#modal button {
+    align-self: flex-end;
+}
+
 
 header {
     display: flex;

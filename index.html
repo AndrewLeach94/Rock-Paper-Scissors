@@ -9,33 +9,39 @@
     <script src="js/lottie.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-
 </head>
 <body>
-<header>
-    <h1>Rock, Paper, Scissors</h1>
-    <h2>First to five points wins!</h2>
-</header>
-<main>
-    <div id="score-board">
-        <div id="player-score"></div>  
-        <div id="computer-score">
-            <p>Computer</p>
-            <div class="computer-counter"></div>
+    <div class="modal-wrapper">
+        <div id="modal">
+            <label for="player-name-input">What's your name?</label>
+            <input id="userInput" autocomplete="off">
+            <button id="name-submit">Let's Play</button>    
         </div>
     </div>
-    <div id="animation-container"></div>
-    <div id="message-banner"></div>
-    <div id="button-wrapper">
-        <button id="btn-rock"><i class="far fa-hand-rock"></i>Rock</button>
-        <button id="btn-paper"><i class="far fa-hand-paper"></i>Paper</button>
-        <button id="btn-scissors"><i class="far fa-hand-scissors"></i>Scissors</button>
-    </div>
-</main>
-<footer>
-    <h6><a href=https://github.com/AndrewLeach94 <i class="fab fa-github"></i></a>Created by Andrew Leach</h6>
-</footer>    
-<script type="text/javascript" src="js/script.js"></script> 
+    <header>
+        <h1>Rock, Paper, Scissors</h1>
+        <h2>First to five points wins!</h2>
+    </header>
+    <main>
+        <div id="score-board">
+            <div id="player-score"></div>  
+            <div id="computer-score">
+                <p>Computer</p>
+                <div class="computer-counter"></div>
+            </div>
+        </div>
+        <div id="animation-container"></div>
+        <div id="message-banner"></div>
+        <div id="button-wrapper">
+            <button id="btn-rock"><i class="far fa-hand-rock"></i>Rock</button>
+            <button id="btn-paper"><i class="far fa-hand-paper"></i>Paper</button>
+            <button id="btn-scissors"><i class="far fa-hand-scissors"></i>Scissors</button>
+        </div>
+    </main>
+    <footer>
+        <h6><a href=https://github.com/AndrewLeach94 <i class="fab fa-github"></i></a>Created by Andrew Leach</h6>
+    </footer>    
+    <script type="text/javascript" src="js/script.js"></script> 
 
 
 </body>
