@@ -6,7 +6,10 @@ function modalDisappear() {
     
 }
 
-document.querySelector("#name-submit").addEventListener("click", function() {
+// Figure out if user is on phone or desktop
+let touchEvent = 'ontouchstart' in window ? 'touchstart' : 'click';
+// Start game and remove player selection screen
+document.querySelector("#name-submit").addEventListener(touchEvent, function() {
     startGame(); 
     modalDisappear();
     })
