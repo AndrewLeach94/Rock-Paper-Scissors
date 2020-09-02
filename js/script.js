@@ -1,15 +1,16 @@
 
+const modal = document.querySelector(".modal-wrapper");
+
 function modalDisappear() {
-    let modal = document.querySelector(".modal-wrapper");
     modal.classList.toggle("modal-wrapper-hide");
-    modal.addEventListener("transitionend", function() {modal.style.display = "none"});
+    modal.addEventListener("transitionend", function(e) {modal.style.display = "none"});
     
 }
 
 // Figure out if user is on phone or desktop
 let touchEvent = 'ontouchstart' in window ? 'touchstart' : 'click';
 // Start game and remove player selection screen
-document.querySelector("#name-submit").addEventListener(touchEvent, function() {
+document.querySelector("#name-submit").addEventListener(touchEvent, function(e) {
     startGame(); 
     modalDisappear();
     })
@@ -18,11 +19,7 @@ document.querySelector("#name-submit").addEventListener(touchEvent, function() {
     // Save the players name and build the scoreboard
     function startGame() {
         player = document.getElementById('userInput').value;
-        console.log(player);
-
-        // kill the modal
-        
-    
+        console.log(player);        
 
         let playerName = document.querySelector('#player-score');
         playerName.textContent = player;
@@ -174,29 +171,74 @@ document.querySelector("#name-submit").addEventListener(touchEvent, function() {
         function playRound(userSelection, computerSelection) {
 
             // Display victory or defeat message to user and add to the total scores - this if/else-if statement is written as a tenerary operator for shorthand 
-            userSelection == "rock" && computerSelection == "paper" ? (messageBanner.textContent = "Sorry pal, paper beats rock :(", ++computerCounter, computerScore.textContent = computerCounter, lottie.stop(), lottie.play("lostRocktoPaper")) :
+            userSelection == "rock" && computerSelection == "paper" ? (messageBanner.textContent = "Sorry pal, paper beats rock", ++computerCounter, computerScore.textContent = computerCounter, lottie.stop(), lottie.play("lostRocktoPaper")) :
             userSelection == "rock" && computerSelection == "scissors" ? (messageBanner.textContent = "Hell yeah, you sure crushed those scissors!", ++playerCounter, playerScore.textContent = playerCounter, lottie.stop(), lottie.play("wonRockBeatsScissors")) :
-            userSelection == "rock" && computerSelection == "rock" ? (messageBanner.textContent = "Tie - Lame, guess y'all just like rocks", lottie.stop(), lottie.play("tieRock")) :
+            userSelection == "rock" && computerSelection == "rock" ? (messageBanner.textContent = "Lame, guess y'all just like rocks", lottie.stop(), lottie.play("tieRock")) :
             userSelection == "paper" && computerSelection == "rock" ? (messageBanner.textContent = "Hell yeah, you sure beat that rock", ++playerCounter, playerScore.textContent = playerCounter, lottie.stop(), lottie.play("wonPaperBeatsRock")) :
-            userSelection == "paper" && computerSelection == "paper" ? (messageBanner.textContent = "Tie - Lame. Guess y'all just like paper then", lottie.stop(), lottie.play("tiePaper")) :
-            userSelection == "paper" && computerSelection == "scissors" ? (messageBanner.textContent = "Sorry pal, you got beat by some scissors :(", ++computerCounter, computerScore.textContent = computerCounter, lottie.stop(), lottie.play("lostPapertoScissors")) :
-            userSelection == "scissors" && computerSelection == "rock" ? (messageBanner.textContent = "Sorry pal, you got beat by a rock :(", ++computerCounter, computerScore.textContent = computerCounter, lottie.stop(), lottie.play("lostScissorstoRock")) :
+            userSelection == "paper" && computerSelection == "paper" ? (messageBanner.textContent = "Lame. Guess y'all just like paper then", lottie.stop(), lottie.play("tiePaper")) :
+            userSelection == "paper" && computerSelection == "scissors" ? (messageBanner.textContent = "Sorry pal, you got beat by some scissors", ++computerCounter, computerScore.textContent = computerCounter, lottie.stop(), lottie.play("lostPapertoScissors")) :
+            userSelection == "scissors" && computerSelection == "rock" ? (messageBanner.textContent = "Sorry pal, you got beat by a rock", ++computerCounter, computerScore.textContent = computerCounter, lottie.stop(), lottie.play("lostScissorstoRock")) :
             userSelection == "scissors" && computerSelection == "paper" ? (messageBanner.textContent = "Hell yeah, you sure cut that paper", ++playerCounter, playerScore.textContent = playerCounter, lottie.stop(), lottie.play("wonScissorsBeatsPaper")) : 
-            userSelection == "scissors" && computerSelection == "scissors" ? (messageBanner.textContent = "Tie - Lame. Guess y'all just really like scissors", lottie.stop(), lottie.play("tieScissors"))
+            userSelection == "scissors" && computerSelection == "scissors" ? (messageBanner.textContent = "Lame. Guess y'all just really like scissors", lottie.stop(), lottie.play("tieScissors"))
                 : "You forgotten how to spell? Try again";
 
             
             // End and reset the round when someone's score reaches 5
 
-            if (playerCounter == 5) {
-                alert("How's it feel to be a winner?");
+            
+            //Declare modal
+            let modalWrapperEnd = document.createElement('div');
+            modalWrapperEnd.classList.add('modal_wrapper-gameend');
+
+            let winnerModal = document.createElement('div');
+            winnerModal.classList.add('modal_gameend');
+
+            let winnerMessageHead = document.createElement('h4');
+            let winnerMessage = document.createElement('p');
+
+
+            // Create reset button
+            let resetButton = document.createElement('button');
+            resetButton.classList.add('modal_button');
+            resetButton.addEventListener("click", function(e) {
                 resetRound();
+                modalWrapperEnd.remove();
+            })
+
+
+            if (playerCounter == 5) {
+                // create modal
+                document.body.appendChild(modalWrapperEnd);
+
+                modalWrapperEnd.appendChild(winnerModal);
+
+                winnerMessageHead.textContent = "Wahey!";
+                winnerModal.appendChild(winnerMessageHead);
+                
+                winnerMessage.textContent = "So how's it feel? To be a winner?";
+                winnerModal.appendChild(winnerMessage);
+
+                resetButton.textContent = "Play Again?";
+                winnerModal.appendChild(resetButton);
+                
             }
 
             else if (computerCounter == 5) {
-                alert("Yikes, better luck next time");
-                resetRound();
+                document.body.appendChild(modalWrapperEnd);
+
+                modalWrapperEnd.appendChild(winnerModal);
+
+                winnerMessageHead.textContent = "Ouch";
+                winnerModal.appendChild(winnerMessageHead);
+                
+                winnerMessage.textContent = "Better luck next time :(";
+                winnerModal.appendChild(winnerMessage);
+
+                resetButton.textContent = "Try Again?";
+                winnerModal.appendChild(resetButton);
+
             }
+
             
         }
 
@@ -206,6 +248,7 @@ document.querySelector("#name-submit").addEventListener(touchEvent, function() {
         rock.addEventListener("click", function(e) {
             playRound("rock", computerPlay())
         });
+
         const paper = document.querySelector('#btn-paper');
         paper.addEventListener("click", function(e) {
             playRound("paper", computerPlay())});

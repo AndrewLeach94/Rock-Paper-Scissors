@@ -46,11 +46,11 @@ body {
 #modal input {
     background-color: #174358;
     color: #EBF4F9;
-    margin: 20px 0px 30px;
+    margin: 20px 0px;
     font-family: 'PT Sans', sans-serif;
     border: 1px solid #123445;
     border-radius: 2px;
-    padding: 5px 5px;
+    padding-top: 5px;
     width: 100%;
 }
 
@@ -58,7 +58,8 @@ body {
     outline: 1px solid #47A0CA;
 }
 
-#modal button {
+.modal_button {
+    margin-top: 20px;
     align-self: flex-end;
 }
 
@@ -95,7 +96,7 @@ h2 {
     border: 2px solid #143C4E;
     padding: 10px 0px;
     border-radius: 4px;
-    margin-bottom: 20px;
+    margin: 0px 20px 20px;
 }
 
 #score-board p {
@@ -168,7 +169,7 @@ button i {
     font-family: 'PT Sans', sans-serif;
     font-size: 1rem;
     padding: 20px 10px;
-    margin: 20px 0px 40px;
+    margin: 20px 20px 40px;
     text-align: center;
 }
 
@@ -189,4 +190,40 @@ footer h6 {
     font-size: 1rem;
     font-weight: 400;
     color: #47a0ca85;
+}
+
+.modal_wrapper-gameend {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000b3;
+}
+
+.modal_gameend {
+    background-color: #0F2D3B;
+    color: #EBF4F9;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 400;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 70vw;
+    padding: 30px 20px 20px;
+    border-radius: 2px;
+    border: 2px solid #123445;
+}
+
+.modal_gameend h4 {
+    font-size: 1.3rem;
+    font-weight: 400;
+    font-family: 'Russo One', sans-serif;
+}
+
+.modal_gameend p {
+    margin: 0;
+    margin-bottom: 20px;
 }
