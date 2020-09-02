@@ -7,19 +7,28 @@ function modalDisappear() {
     
 }
 
-// Figure out if user is on phone or desktop
-let touchEvent = 'ontouchstart' in window ? 'touchstart' : 'click';
 // Start game and remove player selection screen
-document.querySelector("#name-submit").addEventListener(touchEvent, function(e) {
-    startGame(); 
-    modalDisappear();
+document.querySelector("#name-submit").addEventListener("click", function(e) {
+    function validateName() {
+        let input = document.querySelector("#userInput");
+        let inputValue = document.querySelector("#userInput").value;
+        if (inputValue == "") {
+            input.style.border = "solid 1px #EB3838";
+            input.placeholder = "Please enter a name";
+        }
+
+        else {
+            startGame(); 
+            modalDisappear();      
+        }
+    }
+    validateName();
     })
 
 
     // Save the players name and build the scoreboard
     function startGame() {
         player = document.getElementById('userInput').value;
-        console.log(player);        
 
         let playerName = document.querySelector('#player-score');
         playerName.textContent = player;
@@ -39,89 +48,6 @@ document.querySelector("#name-submit").addEventListener(touchEvent, function(e) 
 
 
 
-        // Animations 
-        const animationPlayer = document.querySelector('animation-container');
-
-        const lostPapertoScissors = lottie.loadAnimation( {
-            container: document.getElementById('animation-container'),
-            path: 'animations/lost-paper-to-scissors/lost-paper-to-scissors.json',
-            renderer: 'svg',
-            loop: false,
-            autoplay: false,
-            name: "lostPapertoScissors"
-        })
-
-        const lostScissorstoRock = lottie.loadAnimation( {
-            container: document.getElementById('animation-container'),
-            path: 'animations/lost-scissors-to-rock/lost-scissors-to-rock.json',
-            renderer: 'svg',
-            loop: false,
-            autoplay: false,
-            name: "lostScissorstoRock"
-        })
-
-        const lostRocktoPaper = lottie.loadAnimation( {
-            container: document.getElementById('animation-container'),
-            path: 'animations/lost-rock-to-paper/lost-rock-to-paper.json',
-            renderer: 'svg',
-            loop: false,
-            autoplay: false,
-            name: "lostRocktoPaper"
-        })
-
-        const tiePaper = lottie.loadAnimation( {
-            container: document.getElementById('animation-container'),
-            path: 'animations/tie-paper/tie-paper.json',
-            renderer: 'svg',
-            loop: false,
-            autoplay: false,
-            name: "tiePaper"
-        })
-
-        const tieRock = lottie.loadAnimation( {
-            container: document.getElementById('animation-container'),
-            path: 'animations/tie-rock/tie-rock.json',
-            renderer: 'svg',
-            loop: false,
-            autoplay: false,
-            name: "tieRock"
-        })
-
-        const tieScissors = lottie.loadAnimation( {
-            container: document.getElementById('animation-container'),
-            path: 'animations/tie-scissors/tie-scissors.json',
-            renderer: 'svg',
-            loop: false,
-            autoplay: false,
-            name: "tieScissors"
-        })
-
-        const wonPaperBeatsRock = lottie.loadAnimation( {
-            container: document.getElementById('animation-container'),
-            path: 'animations/won-paper-beats-rock/won-paper-beats-rock.json',
-            renderer: 'svg',
-            loop: false,
-            autoplay: false,
-            name: "wonPaperBeatsRock"
-        })
-
-        const wonRockBeatsScissors = lottie.loadAnimation( {
-            container: document.getElementById('animation-container'),
-            path: 'animations/won-rock-beats-scissors/won-rock-beats-scissors.json',
-            renderer: 'svg',
-            loop: false,
-            autoplay: false,
-            name: "wonRockBeatsScissors"
-        })
-
-        const wonScissorsBeatsPaper = lottie.loadAnimation( {
-            container: document.getElementById('animation-container'),
-            path: 'animations/won-scissors-beats-paper/won-scissors-beats-paper.json',
-            renderer: 'svg',
-            loop: false,
-            autoplay: false,
-            name: "wonScissorsBeatsPaper"
-        })
 
 
 
@@ -257,6 +183,93 @@ document.querySelector("#name-submit").addEventListener(touchEvent, function(e) 
         scissors.addEventListener("click", function(e) {
             playRound("scissors", computerPlay()) 
         });
+
+        
+        
+        // Animations 
+        const animationPlayer = document.querySelector('animation-container');
+
+        const lostPapertoScissors = lottie.loadAnimation( {
+            container: document.getElementById('animation-container'),
+            path: 'animations/lost-paper-to-scissors/lost-paper-to-scissors.json',
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            name: "lostPapertoScissors"
+        })
+
+        const lostScissorstoRock = lottie.loadAnimation( {
+            container: document.getElementById('animation-container'),
+            path: 'animations/lost-scissors-to-rock/lost-scissors-to-rock.json',
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            name: "lostScissorstoRock"
+        })
+
+        const lostRocktoPaper = lottie.loadAnimation( {
+            container: document.getElementById('animation-container'),
+            path: 'animations/lost-rock-to-paper/lost-rock-to-paper.json',
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            name: "lostRocktoPaper"
+        })
+
+        const tiePaper = lottie.loadAnimation( {
+            container: document.getElementById('animation-container'),
+            path: 'animations/tie-paper/tie-paper.json',
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            name: "tiePaper"
+        })
+
+        const tieRock = lottie.loadAnimation( {
+            container: document.getElementById('animation-container'),
+            path: 'animations/tie-rock/tie-rock.json',
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            name: "tieRock"
+        })
+
+        const tieScissors = lottie.loadAnimation( {
+            container: document.getElementById('animation-container'),
+            path: 'animations/tie-scissors/tie-scissors.json',
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            name: "tieScissors"
+        })
+
+        const wonPaperBeatsRock = lottie.loadAnimation( {
+            container: document.getElementById('animation-container'),
+            path: 'animations/won-paper-beats-rock/won-paper-beats-rock.json',
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            name: "wonPaperBeatsRock"
+        })
+
+        const wonRockBeatsScissors = lottie.loadAnimation( {
+            container: document.getElementById('animation-container'),
+            path: 'animations/won-rock-beats-scissors/won-rock-beats-scissors.json',
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            name: "wonRockBeatsScissors"
+        })
+
+        const wonScissorsBeatsPaper = lottie.loadAnimation( {
+            container: document.getElementById('animation-container'),
+            path: 'animations/won-scissors-beats-paper/won-scissors-beats-paper.json',
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            name: "wonScissorsBeatsPaper"
+        })
+        
 
 }
 

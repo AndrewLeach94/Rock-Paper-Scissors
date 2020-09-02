@@ -58,6 +58,7 @@ body {
     outline: 1px solid #47A0CA;
 }
 
+
 .modal_button {
     margin-top: 20px;
     align-self: flex-end;
@@ -154,6 +155,7 @@ button {
     font-size: 1rem;
     padding: 5px 10px;
     min-width: 95px;
+    cursor: pointer;
 }
 
 button i {
@@ -226,4 +228,46 @@ footer h6 {
 .modal_gameend p {
     margin: 0;
     margin-bottom: 20px;
+}
+
+
+/* ----------------------------------------------------------------------------------------------------------
+                                        Media Queries
+---------------------------------------------------------------------------------------------------------- */
+
+@media (min-width: 900px) {
+
+    body {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-content: center;
+    }
+
+    #modal {
+        max-width: 500px;
+    }
+
+    main {
+        padding: 0% 20%;
+    }
+
+    footer {
+        display: flex;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        align-items: center;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .modal_gameend {
+        max-width: 500px;
+    }
+
+
+
 }
